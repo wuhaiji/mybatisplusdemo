@@ -1,13 +1,13 @@
-package com.yuntun.mybatisplusdemo;
+package com.whj.mybatisplusdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MybatisplusdemoApplication {
+public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(MybatisplusdemoApplication.class, args);
+        SpringApplication.run(App.class, args);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.yuntun.mybatisplusdemo;
+package com.whj.mybatisplusdemo;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;

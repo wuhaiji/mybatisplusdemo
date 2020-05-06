@@ -1,4 +1,4 @@
-package com.yuntun.mybatisplusdemo;
+package com.whj.mybatisplusdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
