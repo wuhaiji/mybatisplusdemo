@@ -19,28 +19,29 @@ public class CodeGenerator {
     //项目路径
     private static String canonicalPath = "";
     //基本包名
-    private static String basePackage = "com.yuntun.mybatisplusdemo";
-//    private static String moduleName = "mybatisplusdemo";
+    private static String basePackage = "com.bailb.blbs.facade.call";
+    //    private static String moduleName = "mybatisplusdemo";
     //作者
     private static String authorName = "whj";
-    //要生成的表名
-    private static String[] tables = {"package_fee_copy"};
+    //要生成的表名，逗号隔开
+    private static String[] tables = {"t_nurse_group"};
+    //表名前缀，用于生成的类名去掉前缀
     //数据库配置四要素
-    private static DbType dbType = DbType.SQL_SERVER;
-    private static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String url = "jdbc:sqlserver://47.92.171.81:1433;databaseName=yanglao-yuntun";
-    private static String username = "sa";
-    private static String password = "yanglao~!@123";
+    private static DbType dbType = DbType.MYSQL;
+    private static String driverName = "com.mysql.cj.jdbc.Driver";
+    private static String url = "jdbc:mysql://192.168.0.108:3306/sos_api?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+    private static String username = "root";
+    private static String password = "123456";
 
     private final static Logger logger = LoggerFactory.getLogger(CodeGenerator.class);
 
     /**
      * 获取项目路径
      */
-   static{
+    static {
         try {
             canonicalPath = new File("").getCanonicalPath();
-            logger.info("项目绝对路径:{}",canonicalPath);
+            logger.info("项目绝对路径:{}", canonicalPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,8 +57,7 @@ public class CodeGenerator {
                 .setOpen(false)
                 .setFileOverride(true)
                 .setFileOverride(true)
-                .setAuthor(authorName)
-                ;
+                .setAuthor(authorName);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -67,7 +67,7 @@ public class CodeGenerator {
                 .setDriverName(driverName)
                 .setUsername(username)
                 .setPassword(password)
-                //.setSchemaName("public")
+//                .setSchemaName("public")
                 ;
         mpg.setDataSource(dsc);
 
@@ -83,7 +83,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setControllerMappingHyphenStyle(false);
         strategy.setInclude(tables);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setTablePrefix("t_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
