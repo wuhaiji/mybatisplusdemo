@@ -19,17 +19,17 @@ public class CodeGenerator {
     //项目路径
     private static String canonicalPath = "";
     //基本包名
-    private static String basePackage = "com.bailb.blbs.facade.call";
+    private static String basePackage = "com.blb.typlatform";
     //    private static String moduleName = "mybatisplusdemo";
     //作者
     private static String authorName = "whj";
     //要生成的表名，逗号隔开
-    private static String[] tables = {"t_nurse_group"};
+    private static String[] tables = {"test"};
     //表名前缀，用于生成的类名去掉前缀
     //数据库配置四要素
     private static DbType dbType = DbType.MYSQL;
     private static String driverName = "com.mysql.cj.jdbc.Driver";
-    private static String url = "jdbc:mysql://192.168.0.108:3306/sos_api?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://192.168.0.108:3306/ty_platform?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
     private static String username = "root";
     private static String password = "123456";
 
@@ -83,7 +83,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setControllerMappingHyphenStyle(false);
         strategy.setInclude(tables);
-        strategy.setTablePrefix("t_");
+        strategy.setTablePrefix("");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
