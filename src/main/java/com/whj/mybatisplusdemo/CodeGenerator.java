@@ -24,7 +24,8 @@ public class CodeGenerator {
     //作者
     private static String authorName = "whj";
     //要生成的表名，逗号隔开
-    private static String[] tables = {"test"};
+//    private static String[] tables = {"t_ty_category", "t_ty_constructor", "t_ty_device", "t_ty_maintain_order", "t_ty_order", "t_ty_project", "t_ty_room"};
+    private static String tableList = "t_ty_category,t_ty_constructor,t_ty_device,t_ty_maintain_order,t_ty_order,t_ty_project,t_ty_room";
     //表名前缀，用于生成的类名去掉前缀
     //数据库配置四要素
     private static DbType dbType = DbType.MYSQL;
@@ -74,7 +75,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig().setParent(basePackage);
         mpg.setPackageInfo(pc);
-
+        String[] tables = tableList.split(",");
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
@@ -83,7 +84,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setControllerMappingHyphenStyle(false);
         strategy.setInclude(tables);
-        strategy.setTablePrefix("");
+        strategy.setTablePrefix("t_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
