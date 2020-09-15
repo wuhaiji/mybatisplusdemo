@@ -2,10 +2,7 @@ package com;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -74,6 +71,11 @@ public class CodeGenerator {
                 .setXml("xml");
         mpg.setPackageInfo(pc);
 
+        //指定自定义模板路径, 位置：/resources/templates/entity2.java.ftl(或者是.vm)
+        //注意不要带上.ftl(或者是.vm), 会根据使用的模板引擎自动识别
+        TemplateConfig templateConfig = new TemplateConfig().setMapper("templates/mapper2.java");
+        //配置自定义模板
+        mpg.setTemplate(templateConfig);
 
         // 策略配置
         String[] tables = tableList.split(",");
